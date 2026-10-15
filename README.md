@@ -23,7 +23,16 @@ O projeto inclui quatro áreas principais:
 - **Risk Matrix:** identificação de riscos, impacto, probabilidade e prioridade.
 - **Test Cases:** casos de teste com pré-condições, passos e resultados.
 - **Bugs:** registo dos defeitos identificados durante os testes.
+  
+### Evidências de teste
 
+As capturas de ecrã abaixo documentam a investigação do defeito visual BUG-001 no ambiente de demonstração SauceDemo.
+
+- [Mensagem de erro cortada](TC-005_mensagem-de-erro-cortada.png)
+- [Altura original do elemento no DevTools (45 px)](TC-005_devtools-height-original-45px.png)
+- [Teste temporário com a mensagem sem cortes no DevTools](TC-005_mensagem-de-erro-sem-cortes-teste-DevTools-temporario.png)
+
+**Nota:** a alteração de altura foi apenas um teste temporário no Chrome DevTools, não uma correção permanente da aplicação.
 ## Ferramentas e técnicas
 
 - Testes manuais e funcionais
