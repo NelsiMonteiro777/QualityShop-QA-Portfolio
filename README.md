@@ -64,3 +64,13 @@ Este projeto faz parte do meu portefólio de aprendizagem prática em QA.
 ---
 
 **Projeto de aprendizagem prática — Quality Assurance (QA).**
+
+## Automação de testes
+
+Foram automatizados sete casos de teste da funcionalidade de login (TC-001 a TC-007), utilizando Python, Selenium, pytest e Google Chrome.
+
+Para executar os testes, abre o terminal na pasta principal do projeto e executa:
+
+```text
+python -m pytest tests/test_login.py -v
+```
