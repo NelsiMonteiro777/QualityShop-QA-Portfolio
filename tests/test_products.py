@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 def test_adicionar_produto_ao_carrinho():
     driver = webdriver.Chrome()
@@ -111,6 +113,64 @@ def test_acessar_checkout_pelo_carrinho():
         driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
         driver.find_element(By.ID, "checkout").click()
 
+        assert "checkout-step-one.html" in driver.current_url
+    finally:
+        driver.quit()
+
+def test_checkout_sem_first_name():
+    driver = webdriver.Chrome()
+    try:
+        driver.get("https://www.saucedemo.com/")
+        driver.find_element(By.ID, "user-name").send_keys("standard_user")
+        driver.find_element(By.ID, "password").send_keys("secret_sauce")
+        driver.find_element(By.ID, "login-button").click()
+
+        driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+        driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+        driver.find_element(By.ID, "checkout").click()
+        driver.find_element(By.ID, "continue").click()
+        WebDriverWait(driver, 10).until(
+            EC.text_to_be_present_in_element(
+                (By.CLASS_NAME, "error-message-container"),
+                "Error: First Name is required"
+            )
+        )
+       
+        mensagem = driver.find_element(
+            By.CLASS_NAME, "error-message-container"
+        ).text
+        assert "Error: First Name is required" in mensagem
+        assert "checkout-step-one.html" in driver.current_url
+    finally:
+        driver.quit()
+def test_checkout_sem_last_name():
+    driver = webdriver.Chrome()
+    try:
+        driver.get("https://www.saucedemo.com/")
+        driver.find_element(By.ID, "user-name").send_keys("standard_user")
+        driver.find_element(By.ID, "password").send_keys("secret_sauce")
+        driver.find_element(By.ID, "login-button").click()
+
+        WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            (By.ID, "add-to-cart-sauce-labs-backpack")
+        )
+    ).click()
+        driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+        driver.find_element(By.ID, "checkout").click()
+        driver.find_element(By.ID, "first-name").send_keys("Ana")
+        driver.find_element(By.ID, "continue").click()
+
+        WebDriverWait(driver, 10).until(
+            EC.text_to_be_present_in_element(
+                (By.CLASS_NAME, "error-message-container"),
+                "Error: Last Name is required"
+            )
+        )
+        mensagem = driver.find_element(
+            By.CLASS_NAME, "error-message-container"
+        ).text
+        assert "Error: Last Name is required" in mensagem
         assert "checkout-step-one.html" in driver.current_url
     finally:
         driver.quit()

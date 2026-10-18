@@ -67,7 +67,7 @@ Este projeto faz parte do meu portefólio de aprendizagem prática em QA.
 
 ## Automação de testes
 
-Até ao momento, foram automatizados doze casos de teste: sete da funcionalidade de login (TC-001 a TC-007) e cinco de produtos, carrinho e checkout (TC-011 a TC-015), utilizando Python, Selenium, pytest e Google Chrome.
+Até ao momento, foram automatizados catorze casos de teste: sete da funcionalidade de login (TC-001 a TC-007) e sete de produtos, carrinho e checkout (TC-011 a TC-017), utilizando Python, Selenium, pytest e Google Chrome.
 ```text
 python -m pytest tests -v
 ```
