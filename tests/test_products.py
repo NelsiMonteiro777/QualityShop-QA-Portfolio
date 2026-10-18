@@ -65,3 +65,20 @@ def test_verificar_produto_no_carrinho():
         assert preco_carrinho == preco_products
     finally:
         driver.quit()
+
+def test_remover_produto_do_carrinho():
+    driver = webdriver.Chrome()
+    try:
+        driver.get("https://www.saucedemo.com/")
+        driver.find_element(By.ID, "user-name").send_keys("standard_user")
+        driver.find_element(By.ID, "password").send_keys("secret_sauce")
+        driver.find_element(By.ID, "login-button").click()
+
+        driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+        driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+        driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
+
+        itens = driver.find_elements(By.CLASS_NAME, "cart_item")
+        assert len(itens) == 0
+    finally:
+        driver.quit()
