@@ -67,10 +67,10 @@ Este projeto faz parte do meu portefólio de aprendizagem prática em QA.
 
 ## Automação de testes
 
-Foram automatizados sete casos de teste da funcionalidade de login (TC-001 a TC-007), utilizando Python, Selenium, pytest e Google Chrome.
+Até ao momento, foram automatizados nove casos de teste: sete da funcionalidade de login (TC-001 a TC-007) e dois de produtos e carrinho (TC-011 e TC-012), utilizando Python, Selenium, pytest e Google Chrome.
 
 Para executar os testes, abre o terminal na pasta principal do projeto e executa:
 
 ```text
-python -m pytest tests/test_login.py -v
+python -m pytest tests -v
 ```
