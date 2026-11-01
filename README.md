@@ -80,3 +80,4 @@ Com as dependências instaladas, execute o comando:
 
 ```text
 python -m pytest tests -v
+```
